@@ -1,0 +1,311 @@
+
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuidado Animal</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #10b981;
+        }
+        
+        .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .whatsapp-btn {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav id="navbar" class="fixed w-full top-0 z-50 shadow-md">
+   <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+     <h1 id="site-title" class="text-2xl font-bold">🐾 Cuidado Animal</h1>
+     <div class="flex gap-8">
+        <a href="#index.html" class="nav-link font-medium">Inicio</a>
+         <a href="#nosotros.html" class="nav-link font-medium">Nosotros</a>
+          <a href="#contacto.html" class="nav-link font-medium">Contacto</a>
+           <a href="#blog.html" class="nav-link font-medium">Blog</a>
+     </div>
+    </div>
+   </div>
+<!-- Blog Section -->
+  <section id="blog" class="py-20 px-6">
+   <div class="max-w-7xl mx-auto">
+    <h2 id="blog-title" class="text-4xl font-bold text-center mb-12">Nuestro Blog</h2>
+    <div class="grid md:grid-cols-3 gap-8"><!-- Blog Card 1 -->
+     <article class="blog-card rounded-xl overflow-hidden shadow-md">
+      <div class="h-48 flex items-center justify-center text-6xl">
+       🐕
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-3">Cuidados Básicos para Perros</h3>
+       <p class="mb-4">Aprende los cuidados esenciales que todo perro necesita para mantenerse saludable y feliz.</p><span class="text-sm font-semibold">Leer más →</span>
+      </div>
+     </article><!-- Blog Card 2 -->
+     <article class="blog-card rounded-xl overflow-hidden shadow-md">
+      <div class="h-48 flex items-center justify-center text-6xl">
+       🐈
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-3">Nutrición Felina</h3>
+       <p class="mb-4">Descubre qué alimentos son mejores para tu gato y cómo mantener una dieta balanceada.</p><span class="text-sm font-semibold">Leer más →</span>
+      </div>
+     </article><!-- Blog Card 3 -->
+     <article class="blog-card rounded-xl overflow-hidden shadow-md">
+      <div class="h-48 flex items-center justify-center text-6xl">
+       🏥
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-3">Vacunación Importante</h3>
+       <p class="mb-4">Conoce el calendario de vacunación y por qué es crucial para la salud de tu mascota.</p><span class="text-sm font-semibold">Leer más →</span>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="py-8 px-6 text-center">
+   <p class="mb-2">© 2024 Cuidado Animal. Todos los derechos reservados.</p>
+   <p class="text-sm opacity-75">Cuidando a tus mascotas con amor y profesionalismo 🐾</p>
+  </footer>
+  <script>
+        const defaultConfig = {
+            background_color: "#f0fdf4",
+            navbar_color: "#ffffff",
+            primary_color: "#10b981",
+            text_color: "#1f2937",
+            card_color: "#ffffff",
+            site_title: "🐾 Cuidado Animal",
+            hero_title: "Cuidando a Tus Mejores Amigos",
+            hero_subtitle: "Expertos en salud y bienestar animal",
+            about_title: "Sobre Nosotros",
+            about_text: "Somos un equipo dedicado al cuidado y bienestar de los animales. Con años de experiencia, ofrecemos servicios profesionales de veterinaria, grooming y asesoría para que tus mascotas tengan la mejor calidad de vida.",
+            contact_title: "Contáctanos",
+            whatsapp_text: "📱 Escríbenos por WhatsApp",
+            blog_title: "Nuestro Blog",
+            font_family: "system-ui",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            const fontFamily = `${customFont}, ${baseFontStack}`;
+            const baseSize = config.font_size || defaultConfig.font_size;
+
+            document.body.style.fontFamily = fontFamily;
+            document.body.style.fontSize = `${baseSize}px`;
+            
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const navbarColor = config.navbar_color || defaultConfig.navbar_color;
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const cardColor = config.card_color || defaultConfig.card_color;
+
+            document.body.style.backgroundColor = backgroundColor;
+            document.body.style.color = textColor;
+            
+            document.getElementById('navbar').style.backgroundColor = navbarColor;
+            document.getElementById('site-title').style.color = primaryColor;
+            document.getElementById('site-title').style.fontSize = `${baseSize * 1.5}px`;
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.style.color = textColor;
+                link.style.fontSize = `${baseSize}px`;
+            });
+            
+            document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+            document.getElementById('hero-title').style.color = textColor;
+            document.getElementById('hero-title').style.fontSize = `${baseSize * 3.125}px`;
+            
+            document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('hero-subtitle').style.color = textColor;
+            document.getElementById('hero-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+            
+            const ctaButton = document.querySelector('a[href="#contacto"]');
+            ctaButton.style.backgroundColor = primaryColor;
+            ctaButton.style.color = '#ffffff';
+            ctaButton.style.fontSize = `${baseSize}px`;
+            
+            document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+            document.getElementById('about-title').style.color = textColor;
+            document.getElementById('about-title').style.fontSize = `${baseSize * 2.5}px`;
+            
+            document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+            document.getElementById('about-text').style.color = textColor;
+            document.getElementById('about-text').style.fontSize = `${baseSize * 1.125}px`;
+            
+            const serviceCards = document.querySelectorAll('#nosotros .text-center.p-6');
+            serviceCards.forEach(card => {
+                card.style.backgroundColor = cardColor;
+                card.style.color = textColor;
+                const heading = card.querySelector('h3');
+                const text = card.querySelector('p');
+                if (heading) heading.style.fontSize = `${baseSize}px`;
+                if (text) text.style.fontSize = `${baseSize * 0.875}px`;
+            });
+            
+            document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+            document.getElementById('contact-title').style.color = textColor;
+            document.getElementById('contact-title').style.fontSize = `${baseSize * 2.5}px`;
+            
+            const contactCard = document.querySelector('#contacto .inline-block.p-8');
+            contactCard.style.backgroundColor = cardColor;
+            
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            whatsappBtn.style.backgroundColor = '#25D366';
+            whatsappBtn.style.fontSize = `${baseSize * 1.125}px`;
+            
+            document.getElementById('whatsapp-text').textContent = config.whatsapp_text || defaultConfig.whatsapp_text;
+            
+            document.getElementById('blog-title').textContent = config.blog_title || defaultConfig.blog_title;
+            document.getElementById('blog-title').style.color = textColor;
+            document.getElementById('blog-title').style.fontSize = `${baseSize * 2.5}px`;
+            
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                card.style.backgroundColor = cardColor;
+                const heading = card.querySelector('h3');
+                const text = card.querySelector('p');
+                const link = card.querySelector('span');
+                if (heading) {
+                    heading.style.color = textColor;
+                    heading.style.fontSize = `${baseSize * 1.25}px`;
+                }
+                if (text) {
+                    text.style.color = textColor;
+                    text.style.fontSize = `${baseSize}px`;
+                }
+                if (link) {
+                    link.style.color = primaryColor;
+                    link.style.fontSize = `${baseSize * 0.875}px`;
+                }
+            });
+            
+            const footer = document.querySelector('footer');
+            footer.style.backgroundColor = navbarColor;
+            footer.style.color = textColor;
+            const footerTexts = footer.querySelectorAll('p');
+            footerTexts.forEach((p, index) => {
+                p.style.fontSize = index === 0 ? `${baseSize}px` : `${baseSize * 0.875}px`;
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.navbar_color || defaultConfig.navbar_color,
+                        set: (value) => {
+                            config.navbar_color = value;
+                            window.elementSdk.setConfig({ navbar_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            config.primary_color = value;
+                            window.elementSdk.setConfig({ primary_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.card_color || defaultConfig.card_color,
+                        set: (value) => {
+                            config.card_color = value;
+                            window.elementSdk.setConfig({ card_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        window.elementSdk.setConfig({ font_family: value });
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        config.font_size = value;
+                        window.elementSdk.setConfig({ font_size: value });
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["site_title", config.site_title || defaultConfig.site_title],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["about_title", config.about_title || defaultConfig.about_title],
+                ["about_text", config.about_text || defaultConfig.about_text],
+                ["contact_title", config.contact_title || defaultConfig.contact_title],
+                ["whatsapp_text", config.whatsapp_text || defaultConfig.whatsapp_text],
+                ["blog_title", config.blog_title || defaultConfig.blog_title]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99a517b081bd6f26',t:'MTc2MjQzNzM2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
